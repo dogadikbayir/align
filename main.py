@@ -40,6 +40,9 @@ if __name__ == "__main__":
     parser.add_argument(
             '--out_root', type=str, default='./aligned'
     )
+    parser.add_argument(
+            '--num_proc', type=int, default=40
+    )
     opt = parser.parse_args()
 
     # Get file names in opt.dataset_root
@@ -53,4 +56,4 @@ if __name__ == "__main__":
     #print(inps)
     #exit(0)
     #    Process dataset in parallel
-    res = pqdm(inps, process, n_jobs=2)
+    res = pqdm(inps, process, n_jobs=opt.num_proc)
